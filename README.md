@@ -16,7 +16,7 @@ BlindPass is a zero-visibility password sharing platform. We're completely blind
 ## 🏗️ Architecture
 
 ### Frontend
-- **React 18** with TypeScript
+- **React 19** with TypeScript
 - **Vite** for fast development and building
 - **Tailwind CSS** for modern, responsive UI
 - **React Router** for navigation

@@ -43,7 +43,7 @@ export default function Layout({ children }: LayoutProps) {
             </button>
 
             <a
-              href="https://github.com"
+              href="https://github.com/JamesWilson19947/BlindPass"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-dark-hover transition-colors text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200"

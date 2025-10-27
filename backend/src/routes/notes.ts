@@ -78,7 +78,8 @@ notesRouter.get('/:noteId', async (req, res) => {
     const note = result.rows[0];
 
     // Check if expired
-    if (note.exp_ts < Date.now()) {
+    const expiryTimestamp = note.exp_ts ? Number(note.exp_ts) : 0;
+    if (expiryTimestamp < Date.now()) {
       // Delete expired note
       await db.execute({
         sql: 'DELETE FROM secure_notes WHERE id = ?',
@@ -134,7 +135,8 @@ notesRouter.head('/:noteId', async (req, res) => {
     const note = result.rows[0];
 
     // Check if expired
-    if (note.exp_ts < Date.now()) {
+    const expiryTimestamp = note.exp_ts ? Number(note.exp_ts) : 0;
+    if (expiryTimestamp < Date.now()) {
       await db.execute({
         sql: 'DELETE FROM secure_notes WHERE id = ?',
         args: [noteId]

@@ -1,10 +1,10 @@
-import React from 'react';
+import { type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { Shield, Github, Sun, Moon } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 
 interface LayoutProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export default function Layout({ children }: LayoutProps) {
@@ -25,9 +25,9 @@ export default function Layout({ children }: LayoutProps) {
           <div className="flex items-center gap-3">
             <Link
               to="/about"
-              className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 transition-colors"
+              className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
             >
-              About
+              How It Works
             </Link>
             
             <button
@@ -70,6 +70,10 @@ export default function Layout({ children }: LayoutProps) {
             </span>
             <span className="text-gray-300 dark:text-gray-700">•</span>
             <span>GDPR Compliant</span>
+            <span className="text-gray-300 dark:text-gray-700">•</span>
+            <Link to="/about" className="hover:text-primary-500 dark:hover:text-primary-400 transition-colors">
+              How It Works
+            </Link>
             <span className="text-gray-300 dark:text-gray-700">•</span>
             <span>Open source</span>
           </p>

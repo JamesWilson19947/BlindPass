@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Shield, Copy, CheckCircle, AlertCircle, Lock, Clock, Eye, Plus, Trash2, Key, Info } from 'lucide-react';
+import { Shield, Copy, CheckCircle, AlertCircle, Lock, Clock, Eye, Plus, Trash2, Key } from 'lucide-react';
 import { createEncryptedEntry } from '../utils/crypto';
 import { createNote } from '../utils/api';
 
@@ -160,13 +160,13 @@ export default function HomePage() {
         </p>
         
         {/* Security Notice */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-4">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-6">
           <Link
             to="/about"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/20 text-blue-600 dark:text-blue-400 text-sm transition-colors"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary-500/10 hover:bg-primary-500/20 border border-primary-500/20 text-primary-600 dark:text-primary-400 text-sm font-medium transition-all hover:scale-105"
           >
-            <Info className="w-4 h-4" />
-            👁️ How does BlindPass stay blind?
+            <Shield className="w-4 h-4" />
+            👁️ How It Works - See Why We're Blind
           </Link>
           <Link
             to="/about#gdpr"

@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import dotenv from 'dotenv';
 import { notesRouter } from './routes/notes.js';
+import { cronRouter } from './routes/cron.js';
 import { cleanupExpiredNotes } from './services/cleanup.js';
 
 dotenv.config();
@@ -36,6 +37,7 @@ app.get('/health', (req, res) => {
 
 // API routes
 app.use('/api/notes', notesRouter);
+app.use('/api/cron', cronRouter);
 
 // Error handling middleware
 app.use((err: Error, req: express.Request, res: express.Response, next: express.NextFunction) => {

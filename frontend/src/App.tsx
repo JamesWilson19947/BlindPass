@@ -4,6 +4,8 @@ import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
 import ViewPage from './pages/ViewPage';
 import AboutPage from './pages/AboutPage';
+import TermsPage from './pages/TermsPage';
+import PrivacyPage from './pages/PrivacyPage';
 import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
@@ -15,6 +17,8 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/view/:noteId" element={<ViewPage />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/terms" element={<TermsPage />} />
+            <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Layout>

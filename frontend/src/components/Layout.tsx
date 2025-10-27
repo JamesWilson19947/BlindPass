@@ -77,6 +77,24 @@ export default function Layout({ children }: LayoutProps) {
             <span className="text-gray-300 dark:text-gray-700">•</span>
             <span>Open source</span>
           </p>
+          <p className="mt-3 flex items-center justify-center gap-3 text-xs">
+            <Link to="/terms" className="hover:text-primary-500 dark:hover:text-primary-400 transition-colors">
+              Terms of Service
+            </Link>
+            <span className="text-gray-300 dark:text-gray-700">•</span>
+            <Link to="/privacy" className="hover:text-primary-500 dark:hover:text-primary-400 transition-colors">
+              Privacy Policy
+            </Link>
+            <span className="text-gray-300 dark:text-gray-700">•</span>
+            <a
+              href="https://github.com/JamesWilson19947/BlindPass"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
+            >
+              GitHub
+            </a>
+          </p>
           <p className="mt-2 text-xs text-gray-500 dark:text-gray-600">
             Your passwords are encrypted locally in your browser and never leave your device unencrypted
           </p>

@@ -351,7 +351,7 @@ export default function AboutPage() {
           BlindPass is open source. Review our code, verify our zero-visibility architecture, and contribute to the project.
         </p>
         <a
-          href="https://github.com"
+          href="https://github.com/JamesWilson19947/BlindPass"
           target="_blank"
           rel="noopener noreferrer"
           className="btn-primary inline-block"

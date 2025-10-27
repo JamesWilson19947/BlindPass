@@ -97,23 +97,32 @@ This will start:
 
 ## 📦 Deployment
 
-### Deploy to Vercel
+BlindPass uses a **monorepo structure** and requires **two separate Vercel projects**:
+- Frontend (static site)
+- Backend (serverless API)
 
-1. **Install Vercel CLI**
-```bash
-npm install -g vercel
-```
+### Quick Deploy to Vercel
 
-2. **Set environment variables in Vercel**
-```bash
-vercel env add TURSO_DATABASE_URL
-vercel env add TURSO_AUTH_TOKEN
-```
+1. **Deploy Frontend**:
+   - Create new Vercel project from your GitHub repo
+   - Set **Root Directory** to `frontend`
+   - Deploy
 
-3. **Deploy**
-```bash
-vercel --prod
-```
+2. **Deploy Backend**:
+   - Create another Vercel project from the **same** GitHub repo
+   - Set **Root Directory** to `backend`
+   - Add environment variables:
+     - `TURSO_DATABASE_URL`
+     - `TURSO_AUTH_TOKEN`
+     - `FRONTEND_URL` (your frontend URL)
+   - Deploy
+
+3. **Link Frontend to Backend**:
+   - In frontend project, add environment variable:
+     - `VITE_API_URL` (your backend URL)
+   - Redeploy frontend
+
+📖 **Detailed deployment guide**: See [DEPLOYMENT.md](./DEPLOYMENT.md) for complete step-by-step instructions.
 
 ### Manual Deployment
 
@@ -122,9 +131,9 @@ vercel --prod
 npm run build
 ```
 
-2. **Deploy backend** to your preferred Node.js hosting
+2. **Deploy backend** to your preferred Node.js hosting or serverless platform
 3. **Deploy frontend** static files to CDN/static hosting
-4. **Update FRONTEND_URL** environment variable on backend
+4. **Update environment variables** for both deployments
 
 ## 🛠️ Development
 

@@ -43,13 +43,18 @@ app.use((err: Error, req: express.Request, res: express.Response, next: express.
   res.status(500).json({ error: 'Internal server error' });
 });
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-  console.log(`📝 Environment: ${process.env.NODE_ENV || 'development'}`);
-  
-  // Run cleanup every hour
-  setInterval(cleanupExpiredNotes, 60 * 60 * 1000);
-  cleanupExpiredNotes(); // Run immediately on startup
-});
+// Start server (for local development)
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running on port ${PORT}`);
+    console.log(`📝 Environment: ${process.env.NODE_ENV || 'development'}`);
+    
+    // Run cleanup every hour
+    setInterval(cleanupExpiredNotes, 60 * 60 * 1000);
+    cleanupExpiredNotes(); // Run immediately on startup
+  });
+}
+
+// Export for Vercel serverless
+export default app;
 

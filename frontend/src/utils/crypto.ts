@@ -4,8 +4,8 @@
  */
 
 // Base64URL encoding/decoding utilities
-export function arrayBufferToBase64Url(buffer: ArrayBuffer): string {
-  const bytes = new Uint8Array(buffer);
+export function arrayBufferToBase64Url(buffer: ArrayBuffer | Uint8Array): string {
+  const bytes = buffer instanceof Uint8Array ? buffer : new Uint8Array(buffer);
   let binary = '';
   for (let i = 0; i < bytes.byteLength; i++) {
     binary += String.fromCharCode(bytes[i]);
@@ -41,11 +41,14 @@ export async function deriveMasterKey(
   baseKey: Uint8Array,
   password?: string
 ): Promise<CryptoKey> {
+  // Create a new Uint8Array with proper ArrayBuffer type
+  const keyBuffer = new Uint8Array(baseKey);
+  
   if (!password) {
     // No password: use base key directly
     return crypto.subtle.importKey(
       'raw',
-      baseKey.buffer as ArrayBuffer,
+      keyBuffer,
       { name: 'AES-GCM', length: 256 },
       false,
       ['encrypt', 'decrypt']
@@ -65,7 +68,7 @@ export async function deriveMasterKey(
   return crypto.subtle.deriveKey(
     {
       name: 'PBKDF2',
-      salt: baseKey.buffer as ArrayBuffer, // Use base key as salt
+      salt: keyBuffer, // Use base key as salt
       iterations: 100000,
       hash: 'SHA-256'
     },
@@ -152,7 +155,7 @@ export async function createEncryptedEntry(
   const encrypted = await encryptContent(content, masterKey);
   
   return {
-    baseKey: arrayBufferToBase64Url(baseKey.buffer),
+    baseKey: arrayBufferToBase64Url(baseKey),
     encryptedContent: JSON.stringify(encrypted),
     hasPassword: Boolean(protectionPassword)
   };

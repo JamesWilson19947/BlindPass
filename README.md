@@ -53,8 +53,8 @@ SharePass implements a true zero-knowledge architecture:
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/sharepass.git
-cd sharepass
+git clone https://github.com/JamesWilson19947/BlindPass.git
+cd BlindPass
 ```
 
 2. **Install dependencies**
@@ -199,11 +199,6 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
-
-- Inspired by [Enclosed](https://enclosed.cc/) - A secure note sharing platform
-- Built with modern web technologies and best security practices
-- Zero-knowledge encryption methodology based on industry standards
 
 ## 📧 Support
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Shield, Lock, Key, Eye, Server, Code, CheckCircle } from 'lucide-react';
 
 export default function AboutPage() {

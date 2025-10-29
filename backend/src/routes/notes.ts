@@ -4,6 +4,33 @@ import { db } from '../db/client.js';
 
 export const notesRouter = Router();
 
+// Known bot User-Agents that might consume links via link preview
+const BOT_USER_AGENTS = [
+  'Slackbot',
+  'Slack-ImgProxy',
+  'facebookexternalhit',
+  'Twitterbot',
+  'LinkedInBot',
+  'WhatsApp',
+  'TelegramBot',
+  'SkypeUriPreview',
+  'visionutils',
+  'DiscordBot',
+  'Discordbot',
+  'Discord',
+  'Googlebot',
+  'bingbot',
+  'Yahoo! Slurp',
+  'DuckDuckBot',
+  'Baiduspider',
+  'YandexBot',
+  'Applebot',
+  'crawler',
+  'spider',
+  'bot',
+  'PreviewBot',
+];
+
 // Create a new encrypted note
 notesRouter.post('/', async (req, res) => {
   try {
@@ -63,6 +90,21 @@ notesRouter.get('/:noteId', async (req, res) => {
 
     if (!noteId || typeof noteId !== 'string') {
       return res.status(400).json({ error: 'Invalid note ID' });
+    }
+
+    // Check User-Agent for known bots to prevent link preview consumption
+    const userAgent = req.headers['user-agent'] || '';
+    const isBot = BOT_USER_AGENTS.some(bot => 
+      userAgent.toLowerCase().includes(bot.toLowerCase())
+    );
+    
+    if (isBot) {
+      console.log(`Bot access blocked: ${userAgent}`);
+      return res.status(403).json({ 
+        error: 'Bot access not allowed',
+        message: 'This link must be opened in a browser. Link preview services cannot access this content to prevent accidental consumption.',
+        userAgent: userAgent
+      });
     }
 
     // Fetch note from database

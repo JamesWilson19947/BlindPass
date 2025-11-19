@@ -182,7 +182,7 @@ export default function HomePage() {
       <div className="card max-w-2xl mx-auto mb-8">
         <form onSubmit={handleSubmit} className="space-y-5">
           {/* Quick Templates */}
-          <div className="flex items-center gap-2 pb-3 border-b border-gray-200 dark:border-dark-border">
+          <div className="flex flex-wrap items-center gap-2 pb-3 border-b border-gray-200 dark:border-dark-border">
             <Key className="w-4 h-4 text-gray-500 dark:text-gray-500" />
             <span className="text-sm text-gray-600 dark:text-gray-400">Quick templates:</span>
             <button
@@ -212,15 +212,15 @@ export default function HomePage() {
           <div className="space-y-3">
             {fields.map((field) => (
               <div key={field.id} className="space-y-2">
-                <div className="flex items-center gap-2">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2">
                   <input
                     type="text"
-                    placeholder="Field name (e.g., Username, API Key)"
+                    placeholder="Field name"
                     value={field.label}
                     onChange={(e) => updateField(field.id, { label: e.target.value })}
-                    className="input text-sm w-48"
+                    className="input text-sm w-full sm:w-48"
                   />
-                  <div className="flex-1 flex items-center gap-2">
+                  <div className="w-full sm:flex-1 flex items-center gap-2">
                     <input
                       type={field.isSecret ? 'password' : 'text'}
                       placeholder="Enter value"

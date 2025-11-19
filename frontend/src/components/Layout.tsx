@@ -25,11 +25,11 @@ export default function Layout({ children }: LayoutProps) {
           <div className="flex items-center gap-3">
             <Link
               to="/about"
-              className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
+              className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400 transition-colors hidden sm:block"
             >
               How It Works
             </Link>
-            
+
             <button
               onClick={toggleTheme}
               className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-dark-hover transition-colors text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200"
